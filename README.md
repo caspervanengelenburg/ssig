@@ -11,7 +11,6 @@ Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) W
 
 ## Abstract
 
-
 *We propose a simple yet effective metric that measures structural similarity between visual instances of architectural floor plans, without the need for learning. 
 Qualitatively, our experiments show that the retrieval results are similar to deeply learned methods. 
 Effectively comparing instances of floor plan data is paramount to the success of machine understanding of floor plan data, including the assessment of floor plan generative models and floor plan recommendation systems. 
@@ -26,10 +25,15 @@ Code will be openly available.*
 
 I will try to tell our story - every act in science is a story in a way - in a simple and understandable way, with the goal to make it easier for you to understand _why_ we did the research, _what_ we did in it, and _how_ we did it.
 
-We do research on **floor plans**. Floor plans are two-dimensional layouts that describe the arrangements of rooms of a particular floor in a building. In this research we focussed on single-apartment
+We do research on **floor plan data**. Floor plans are two-dimensional layouts that describe the arrangements of rooms of a particular floor in a building: 
+
+![Floor plan figure](figures/floor-plan-examples.png)
+
+In this research we focussed on single-apartment
 
 
 ## Repository structure
+
 
 
 ## Code use guidelines
