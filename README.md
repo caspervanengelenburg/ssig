@@ -2,7 +2,7 @@
 
 This repository contains code to accompany the following paper:
 
-[**SSIG: A Visually-Guided Graph Edit Distance for Floor Plan Similarity**](https://github.com/rjbruin/flexconv#flexconv-continuous-kernel-convolutions-with-differentiable-kernel-sizes) </br>
+[**SSIG: A Visually-Guided Graph Edit Distance for Floor Plan Similarity**](https://openaccess.thecvf.com/content/ICCV2023W/CVAAD/html/van_Engelenburg_SSIG_A_Visually-Guided_Graph_Edit_Distance_for_Floor_Plan_Similarity_ICCVW_2023_paper.html) </br>
 [Casper C. J. van Engelenburg](https://www.tudelft.nl/staff/c.c.j.vanengelenburg/?cHash=a72f1da92639fa8301893a08d4b49da1)
 [Seyran Khademi](https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/intelligent-systems/pattern-recognition-bioinformatics/computer-vision-lab/people/seyran-khademi), 
 [Jan C. van Gemert](https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/intelligent-systems/pattern-recognition-bioinformatics/computer-vision-lab/people/jan-van-gemert) </br>
