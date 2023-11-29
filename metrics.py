@@ -2,7 +2,47 @@ import torch
 import numpy as np
 import networkx as nx
 
-def miou_distance(pred_mask, mask, classes, smooth=1e-10):
+
+def compute_iou(img_q, img_k, background=False):
+    """
+    Computes the Intersection-over-Union, or Jaccard Distance, between two semantic images.
+    Inputs: query and key image; should be 2-D numpy arrays of the same shape.
+    """
+
+    # Compute
+    union_area = (img_q < 12)
+    union_area += (img_k < 12)
+    if background:
+        union_area += (img_q == 12)
+        union_area += (img_k == 12)
+
+    # Compute intersection
+    inter_area = (img_q - img_k) == 0
+    inter_area = inter_area * union_area
+
+    # IoU
+    return np.sum(inter_area) / np.sum(union_area)
+
+
+# IoU between query image and a list or array of images
+def get_ious(img_q, imgs, background=False):
+    """
+    Intersection-over-union between query and stack of key images.
+    """
+
+    # Initialize IoU vector
+    n = imgs.shape[0]
+    ious = np.zeros((n))
+
+    # Compute IoU across full set of images
+    for i in range(n):
+        img_k = imgs[i]
+        ious[i] = compute_iou(img_q, img_k, background=background)
+
+    return ious
+
+
+def mean_iou(pred_mask, mask, classes, smooth=1e-10):
     """
     Computes the mean Intersection-over-Union between two masks;
     the predicted multi-class segmentation mask and the ground truth.
