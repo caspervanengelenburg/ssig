@@ -23,17 +23,16 @@ Code will be openly available.*
 
 ## Layman's motivation of our research
 
-I will try to tell our story - every act in science is a story in a way - in a simple and understandable way, with the goal to make it easier for you to understand _why_ we did the research, _what_ we did in it, and _how_ we did it.
-
-We do research on **floor plan data**. Floor plans are two-dimensional layouts that describe the arrangements of rooms of a particular floor in a building: 
-
-![Floor plan figure](figures/floor-plan-examples.png)
-
-In this research we focussed on single-apartment
+- TODO: write
 
 
 ## Repository structure
 
+- TODO: write
+
+The 
 
 
 ## Code use guidelines
+
+- TODO: write
