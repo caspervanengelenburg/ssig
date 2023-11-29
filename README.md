@@ -34,6 +34,7 @@ Code will be openly available.*
 - A proposed simple yet powerful measure for the structural similarity of floor plans.
 - An effective ranking technique to sort a large floor plan database, hence developing a starting point for proper evaluation and training of floor plan retrieval models.
 
+
 - [x] add contributions
 
 ## Layman's summary of our work
