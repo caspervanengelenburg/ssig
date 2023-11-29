@@ -30,12 +30,15 @@ Code will be openly available.*
 
 ## Contributions
 
+- A study on the distributions and correlations between IoU and GED on a large-scale floor plan database, with one main finding: IoU and GED independently fail to robustly capture structural similarity.
+- A proposed simple yet powerful measure for the structural similarity of floor plans.
+- An effective ranking technique to sort a large floor plan database, hence developing a starting point for proper evaluation and training of floor plan retrieval models.
 
+- [x] add contributions
 
 ## Layman's summary of our work
 
-Generally speaking, the ability to precisely - and efficiently - compare instances of data is one of the essential ingredients to the success of machine understanding. 
-
+Generally speaking, the ability to precisely - and efficiently - compare instances of data is one of the most essential ingredients to the success of machine understanding. 
 We investigate in our research how *structural* similarity between floor plans is computed / used in recent state-of-the-art works on, primarily data-driven, floor plan generation and/or analysis.
 Surprisingly, previous works either use pixel- (*e.g.* Intersection-over-Union, IoU) *or* graph-based (*e.g.* a graph-edit distance, GED) similarity metrics to estimate (dis)similarity between floor plans. 
 We show that IoU and GED lead to often completely different rankings: in over 38% of randomly sampled floor plan triplets, IoU and GED oppose each other. 
