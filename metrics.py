@@ -119,13 +119,15 @@ def sged_score(g1, g2, ematch=True, nmatch=True):
     return np.exp(- 2 * ged / (g1.number_of_nodes() + g2.number_of_nodes()))
 
 
-def ssig_score(miou, sged, gamma=0.4):
+def ssig_score(miou, ged, gamma=0.4):
     """
     Computes SSIG based on the mean Intersection-over-Union (mIoU)
-    and a graph similarity based on the Graph Edit Distance (GED)
+    and a graph distance based on the Graph Edit Distance (GED)
     between two floor plan samples. The distributions are weighted
     by a tweakable hyper-parameter, gamma. For RPLAN, gamma 0.4 provides
     an almost exact balance between mIoU and sGED distributions.
     """
 
-    return 0.5 * (miou + np.power(sged, gamma))
+    sged = np.power((1 - ged), gamma)
+
+    return 0.5 * (miou + sged)
