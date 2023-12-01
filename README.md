@@ -56,6 +56,8 @@ Here is a visual on how to compute **SSIG**:
 Here is how to rank using a visually-guided GED:
 ![Ranking algorithm](figures/ranking.png)
 
+The coloring scheme (the outline around the floor plan images) is based on the IoU ranking. See how the ranking is indeed altered by re-ranking them on SSIG. Here, we show only 10 retrievals. A black outline means that the floor plan is not in the top-10 on IoU.
+
 
 - [x] add structure
 - [x] add ssig image
