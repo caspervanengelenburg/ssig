@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import torch_geometric
 
 
-# Loading and unloading pickled files
+# loading and unloading pickled files
 def save_pickle(object, filename):
     """
     Saves a pickled file.
@@ -108,3 +108,26 @@ def gather_ids(ids_path='./data/valid_ids.pickle', shuffle=True):
     ids = load_pickle(ids_path)['full'].tolist()
     if shuffle: random.Random(4).shuffle(ids)
     return ids
+
+
+# tensor to image conversion
+def tens2img(img):
+    img = img.cpu().clone().detach().numpy() #make sure works always
+    return img.transpose(1,2,0)
+
+
+# remaining image helper functions
+def hex_to_rgb(hex_code):
+    hex_code = hex_code.lstrip('#')
+    return tuple(int(hex_code[i:i+2], 16) for i in (0, 2, 4))
+
+def pad_image(img, pad, color):
+
+    # initialize padded image
+    img_pad = np.ndarray((img.shape[0] + pad * 2, img.shape[1] + pad * 2, 3))
+
+    # create padded image
+    for i, c in enumerate(color):
+        img_pad[:,:,i] = np.pad(img[:,:,i], ((pad, pad), (pad, pad)), constant_values=c)
+
+    return img_pad

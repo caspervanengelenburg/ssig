@@ -3,77 +3,28 @@ import numpy as np
 import networkx as nx
 
 
-def compute_iou(img_q, img_k, background=False):
+def iou_score(img1, img2, background = False):
+
     """
-    Computes the Intersection-over-Union, or Jaccard Distance, between two semantic images.
+    Computes the Intersection-over-Union (IoU), or Jaccard Distance, between two semantic images.
     Inputs: query and key image; should be 2-D numpy arrays of the same shape.
     """
 
-    # Compute
-    union_area = (img_q < 12)
-    union_area += (img_k < 12)
+    # compute union
+    union = (img1 < 12)
+    union += (img2 < 12)
+
+    # add background to union if needed
     if background:
-        union_area += (img_q == 12)
-        union_area += (img_k == 12)
+        union += (img1 == 12)
+        union += (img2 == 12)
 
-    # Compute intersection
-    inter_area = (img_q - img_k) == 0
-    inter_area = inter_area * union_area
+    # intersection
+    inter = (img1 - img2) == 0
+    inter *= union
 
-    # IoU
-    return np.sum(inter_area) / np.sum(union_area)
-
-
-# IoU between query image and a list or array of images
-def get_ious(img_q, imgs, background=False):
-    """
-    Intersection-over-union between query and stack of key images.
-    """
-
-    # Initialize IoU vector
-    n = imgs.shape[0]
-    ious = np.zeros((n))
-
-    # Compute IoU across full set of images
-    for i in range(n):
-        img_k = imgs[i]
-        ious[i] = compute_iou(img_q, img_k, background=background)
-
-    return ious
-
-
-def mean_iou(pred_mask, mask, classes, smooth=1e-10):
-    """
-    Computes the mean Intersection-over-Union between two masks;
-    the predicted multi-class segmentation mask and the ground truth.
-    """
-
-    n_classes = len(classes)
-
-    # make directly equipable when training (set grad off)
-    with torch.no_grad():
-
-        pred_mask = pred_mask.contiguous().view(-1)
-        mask = mask.contiguous().view(-1)
-
-        iou_per_class = []
-        for c in range(0, n_classes):  # loop over possible classes
-
-            # compute masks per class
-            true_class = pred_mask == c
-            true_label = mask == c
-
-            # when label does not exist in the ground truth, set to NaN
-            if true_label.long().sum().item() == 0:
-                iou_per_class.append(np.nan)
-            else:
-                intersect = torch.logical_and(true_class, true_label).sum().float().item()
-                union = torch.logical_or(true_class, true_label).sum().float().item()
-
-                iou = (intersect + smooth) / (union + smooth)
-                iou_per_class.append(iou)
-
-        return np.nanmean(iou_per_class)
+    # intersection-over-union
+    return np.sum(inter) / np.sum(union)
 
 
 def ged_score(g1, g2, normalize=True, ematch=True, nmatch=True):

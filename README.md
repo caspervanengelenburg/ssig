@@ -50,11 +50,17 @@ Interestingly though, we found that nearly all best matches on **SSIG** for a gi
 Ranking can, thus, be drastically speed-up by first sampling the best matches on IoU and subsequently *re-ranking* these temporarily best matches on **SSIG**.
 It is therefore, that we refer to the ranking algorithm as a visually-guided graph-edit distance.
 
-![Overiew of our method](figures/method-overview.png)
+Here is a visual on how to compute **SSIG**:
+![SSIG metric](figures/ssig-metric.png)
 
-- [ ] add structure
-- [x] add motivation image
-- [ ] write
+Here is how to rank using a visually-guided GED:
+![Ranking algorithm](figures/ranking.png)
+
+
+- [x] add structure
+- [x] add ssig image
+- [x] add ranking image
+- [x] write
 
 
 ## Repository structure
@@ -68,7 +74,7 @@ The repository consists of the following folders, Python scripts, and Jupyter no
 - [nb_rplan.ipynb](nb_rplan.ipynb): _Notebook_ that contains information on how to use, manipulate, and plot the floor plans and corresponding graphs.
 - [nb_ranking.ipynb](nb_ranking.ipynb): _Notebook_ that contains information on how our ranking algorithm is used.
 - [metrics.py](metrics.py): _Script_ that contains all the functions to compute the metrics *e.g.* MIoU, GED, and SSIG.
-- [rplan.py](rplan.py): _Script_ that contains all the functions related to the processing of RPLAN *e.g.* graph extraction algorithm.
+- [rplan.py](rplan.py): _Script_ that contains all the functions related to the processing of RPLAN *e.g.* graph extraction algorithm. *The graph extraction algorithm is not yet uploaded to the repository*.
 - [plot.py](plot.py): _Script_ that contains all the floor plan plotting functions.
 - [constants.py](constants.py): _Script_ that contains often used variables *e.g.* coloring schemes, paths.
 - [utils.py](utils.py): _Script_ that contains all the utility function *e.g.* loading pickle files, colorizing floor plans.
